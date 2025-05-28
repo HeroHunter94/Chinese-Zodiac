@@ -1,0 +1,58 @@
+<!--Siguiendo las instrucciones del encabezado, 
+calcular el signo chino.
+(Hay que asignar el signo chino del año anterior 
+a los nacidos en enero)
+Buscad los dibujitos de los signos chinos.
+Tip: También se puede resolver con arrays-->
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Chinese Zodiac</title>
+        <link rel ="stylesheet" href ="style.css">
+        <link rel = "icon" type= "image/webp" href ="./zodiac.png">
+    </head>
+    <body>
+        <h1>Chinese Zodiac Calculator</h1>
+        <label for = "month">Please insert your month of birth: </label>
+        <input type ="number" id = "month" min = "1" max = "12" value ="1" required>
+        <br>
+        <label for = "year">Please inser your year of birth: </label>
+        <input type = "number" id = "year" value = "1994" max = "9999" required>
+
+        <p><button type = "button" onclick = "zodiacCalc()">Calculate</button></p>
+        <br>
+        <a href ="https://en.wikipedia.org/wiki/Chinese_zodiac">Learn about the Chinese Zodiac
+            <img id = "sign" src = "chinese.jpg" alt = "Chinese Zodiac">
+        </a>
+        <p id = "output"></p>
+
+        <footer>
+            <hr>
+            <p>Author name: Danilo Russo</p>
+            <a href = "mailto:danilorusso.info94@gmail.com">Contact me</a>
+        </footer>
+
+        <script>
+            arrayLetter = ['MONKEY', 'CHICKEN', 'DOG', 'PIG', 'RAT', 'BULL', 'TIGER', 'RABBIT', 'DRAGON', 'SNAKE', 'HORSE', 'GOAT'];
+            const MONTH = document.getElementById("month");
+            const YEAR = document.getElementById("year");
+
+            function zodiacCalc(){
+                let year = Number(YEAR.value);
+                let rest;
+                if (!Number.isInteger(year)) {
+                    output.innerHTML = "Please insert an integer value"
+                } else {
+                    rest = year % 12;
+                    output.innerHTML = `Your Chinese Sign is ${arrayLetter[rest]}`;
+                    sign.src = "img" + arrayLetter[rest] + ".jpg";
+                }
+
+                
+
+            }
+        </script>
+    </body>
+</html>
