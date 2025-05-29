@@ -41,11 +41,19 @@ Tip: También se puede resolver con arrays-->
 
             function zodiacCalc(){
                 let year = Number(YEAR.value);
-                let rest;
-                if (!Number.isInteger(year)) {
+                let month = Number(MONTH.value);
+                let rest = year % 12;
+                if (!Number.isInteger(year) || !Number.isInteger(month)) {
                     output.innerHTML = "Please insert an integer value"
+                } else if (month == 1){
+                    if (rest == 0) {
+                        output.innerHTML = `Your Chinese Sign is ${arrayLetter[arrayLetter.length()]}`;
+                        sign.src = "img" + arrayLetter[arrayLetter.length()] + ".jpg";
+                    } else {
+                        output.innerHTML = `Your Chinese Sign is ${arrayLetter[rest - 1]}`;
+                        sign.src = "img" + arrayLetter[rest -1] + ".jpg";
+                    }
                 } else {
-                    rest = year % 12;
                     output.innerHTML = `Your Chinese Sign is ${arrayLetter[rest]}`;
                     sign.src = "img" + arrayLetter[rest] + ".jpg";
                 }
